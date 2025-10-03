@@ -81,7 +81,6 @@ export function TransferScheduler({
       // 31 a 40 dias → 4,7%
       fee = amount * 0.047;
     } else if (diffDays >= 41 && diffDays <= 50) {
-      // 41 a 50 dias → 1,7%
       fee = amount * 0.017;
     } else {
       throw new Error(
@@ -325,7 +324,11 @@ export function TransferScheduler({
                       setBusinessError("");
                       setIsCalendarOpen(false);
                     }}
-                    disabled={(date) => date < new Date()}
+                    disabled={(date) => {
+                      const today = new Date();
+                      today.setHours(0, 0, 0, 0); // garante que hoje seja permitido
+                      return date < today;
+                    }}
                     initialFocus
                   />
                 </PopoverContent>

@@ -23,14 +23,7 @@ export default function App() {
 
   const handleScheduleTransfer = (transfer: Transfer) => {
     setTransfers((prev) => [...prev, transfer]);
-    toast.success("Transferência agendada com sucesso!", {
-      description: `Agendamento #${
-        transfer.id
-      } criado para ${new Intl.NumberFormat("pt-BR", {
-        style: "currency",
-        currency: "BRL",
-      }).format(transfer.totalAmount)}`,
-    });
+    toast.success("Transferência agendada com sucesso!");
     setActiveTab("history");
   };
 

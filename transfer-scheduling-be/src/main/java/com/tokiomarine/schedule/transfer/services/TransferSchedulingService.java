@@ -27,7 +27,7 @@ public class TransferSchedulingService {
 
         TaxRule rule = TaxRule.getRuleByDays(daysDifference)
                 .orElseThrow(() -> new NoTaxRuleFoundException(
-                        String.format("No applicable tax rule found for transfers scheduled with %d days advance.", daysDifference)
+                        String.format("Não há regra de tarifa para transferências com %d dias de antecedência. O máximo permitido é 50 dias.", daysDifference)
                 ));
 
         BigDecimal appliedFee = rule.calculateFee(request.getValue());
